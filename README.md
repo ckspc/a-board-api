@@ -1,63 +1,135 @@
-Project Name
+# NestJS Blog API
 
-Description
+A robust and scalable blog API built with NestJS, featuring secure authentication, post management, and user profiles.
 
-This project is built using the NestJS framework for building scalable and efficient server-side applications.
+## Features
 
-Project setup
+- 🔐 **Secure Authentication**
+  - JWT-based authentication
+  - Password hashing with bcrypt
+  - Sign-in status tracking
+  
+- 👤 **User Management**
+  - User registration and login
+  - Profile picture management
+  - User status tracking
+  
+- 📝 **Content Management**
+  - Create and manage blog posts
+  - Comment system
+  - Post categorization
+  
+- 🛠 **Technical Features**
+  - PostgreSQL database with Prisma ORM
+  - RESTful API design
+  - Input validation and sanitization
+  - Pagination support
+  - Docker support
+  - Comprehensive test coverage
 
-$ yarn install
+## Prerequisites
 
-Compile and run the project
+- Node.js (v14 or higher)
+- Yarn package manager
+- PostgreSQL
+- Docker (optional)
 
-# development
-$ yarn run start
+## Installation
 
-# watch mode
-$ yarn run start:dev
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd <project-name>
+```
 
-Run with Docker
+2. Install dependencies:
+```bash
+yarn install
+```
 
-$ docker-compose up
+3. Set up environment variables:
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
 
-Database Migration (Prisma)
+4. Run database migrations:
+```bash
+npx prisma migrate dev
+```
 
-$ npx prisma migrate dev
+## Running the Application
 
-Addons Feature
+### Development Mode
+```bash
+# Start the application
+yarn run start
 
-JWT Signup/Login - Secure authentication with JWT tokens.
+# Watch mode
+yarn run start:dev
+```
 
-Pagination - Efficiently paginate API responses for better performance.
+### Docker
+```bash
+# Run with Docker Compose
+docker-compose up
+```
 
-Signin Status - Retrieve and manage user authentication state.
+## Testing
 
-Profile Picture - Users can upload and manage their profile pictures.
+```bash
+# Run unit tests
+yarn run test
 
-Dependencies (Non-Built-in NestJS Packages)
+# Run e2e tests
+yarn run test:e2e
 
-@prisma/client - ORM for database management.
+# Generate test coverage
+yarn run test:cov
+```
 
-bcrypt - Password hashing for authentication.
+## Project Structure
 
-passport - Authentication middleware.
+```
+src/
+├── auth/           # Authentication module
+├── posts/          # Posts module
+├── comments/       # Comments module
+├── users/          # Users module
+├── prisma/         # Prisma configuration and schema
+├── common/         # Shared resources
+└── app.module.ts   # Main application module
+```
 
-passport-jwt - JWT strategy for authentication.
+## Dependencies
 
-passport-local - Local authentication strategy.
+Key dependencies used in this project:
 
-class-validator - Validation for DTOs.
+- **Framework**
+  - NestJS - Progressive Node.js framework
 
-class-transformer - Transform objects between layers.
+- **Database**
+  - @prisma/client - Modern database access
+  - PostgreSQL - Primary database
 
-Run Tests
+- **Authentication**
+  - passport - Authentication middleware
+  - passport-jwt - JWT authentication strategy
+  - passport-local - Username/password authentication
+  - bcrypt - Password hashing
 
-# unit tests
-$ yarn run test
+- **Validation**
+  - class-validator - Input validation
+  - class-transformer - Object transformation
 
-# test coverage
-$ yarn run test:cov
+## Contributing
 
-License
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-This project is MIT licensed.
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
