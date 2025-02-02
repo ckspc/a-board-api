@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PostCategory {
+  HISTORY
+  FOOD
+  PETS
+  HEALTH
+  FASHION
+  EXERCISE
+  OTHER
+}
+
+model User {
+  id           Int       @id @default(autoincrement())
+  username     String    @unique
+  password     String
+  name         String?
+  imageUrl     String?
+  signInStatus Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  posts        Post[]
+  comments     Comment[]
+}
+
+model Post {
+  id        Int          @id @default(autoincrement())
+  title     String
+  content   String
+  category  PostCategory
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  author    User         @relation(fields: [authorId], references: [id])
+  authorId  Int
+  comments  Comment[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  Int
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    Int
+}
