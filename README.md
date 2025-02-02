@@ -2,51 +2,62 @@ Project Name
 
 Description
 
-A NestJS-based project with additional features like JWT authentication and pagination.
+This project is built using the NestJS framework for building scalable and efficient server-side applications.
 
-Addons Features
+Project setup
 
-JWT Signup: Implements authentication using JSON Web Tokens (JWT) with @nestjs/jwt and passport-jwt.
-
-Pagination: Supports paginated responses for API endpoints.
-
-Dependencies
-
-These are the extra dependencies beyond NestJS core:
-
-@nestjs/jwt: Handles JWT authentication.
-
-@nestjs/passport: Integrates Passport.js authentication.
-
-@prisma/client: Prisma ORM for database interactions.
-
-bcrypt: For hashing passwords securely.
-
-class-validator & class-transformer: Enables DTO validation.
-
-passport, passport-jwt, passport-local: Authentication strategies.
-
-Setup and Run
-
-Ensure you have Docker installed and running before proceeding.
-
-# Install dependencies
 $ yarn install
 
-# Start database and services
-$ docker-compose up -d
+Compile and run the project
 
-# Run Prisma migrations
-$ yarn prisma migrate dev
+# development
+$ yarn run start
 
-# Start development server
-$ yarn start:dev
+# watch mode
+$ yarn run start:dev
 
-# Test
-$ yarn test
+Run with Docker
 
-Deployment
+$ docker-compose up
 
-For production, make sure to configure environment variables properly and use appropriate database connections.
+Database Migration (Prisma)
 
-Enjoy building with NestJS! 🚀
+$ npx prisma migrate dev
+
+Addons Feature
+
+JWT Signup/Login - Secure authentication with JWT tokens.
+
+Pagination - Efficiently paginate API responses for better performance.
+
+Signin Status - Retrieve and manage user authentication state.
+
+Profile Picture - Users can upload and manage their profile pictures.
+
+Dependencies (Non-Built-in NestJS Packages)
+
+@prisma/client - ORM for database management.
+
+bcrypt - Password hashing for authentication.
+
+passport - Authentication middleware.
+
+passport-jwt - JWT strategy for authentication.
+
+passport-local - Local authentication strategy.
+
+class-validator - Validation for DTOs.
+
+class-transformer - Transform objects between layers.
+
+Run Tests
+
+# unit tests
+$ yarn run test
+
+# test coverage
+$ yarn run test:cov
+
+License
+
+This project is MIT licensed.
